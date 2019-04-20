@@ -8,29 +8,28 @@ class Carousel {
     this.currentIndex = 0;
     this.images[this.currentIndex].style.display = 'block';
 
-    this.rightButton.addEventListener('click', () => this.clickRight());
-    this.leftButton.addEventListener('click', () => this.clickLeft());
+    this.rightButton.addEventListener('click', (event) => this.move(event));
+    this.leftButton.addEventListener('click', (event) => this.move(event));
   }
 
-  clickRight() {
+  move(event) {
+    let target = event.target;
     this.images.forEach(image => image.style.display = 'none');
 
-    if (this.currentIndex === (this.images.length - 1)) {
-      this.currentIndex = 0;
-    } else {
-      this.currentIndex++;
-    }
+    if (target === this.leftButton) {
+      if (this.currentIndex === 0) {
+        this.currentIndex = (this.images.length - 1)
+      } else {
+        this.currentIndex--;
+      }
+    } 
 
-    this.images[this.currentIndex].style.display = 'block';
-  }
-
-  clickLeft() {
-    this.images.forEach(image => image.style.display = 'none');
-
-    if (this.currentIndex === 0) {
-      this.currentIndex = (this.images.length - 1)
-    } else {
-      this.currentIndex--;
+    if (target === this.rightButton) {
+      if (this.currentIndex === (this.images.length - 1)) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex++;
+      }
     }
 
     this.images[this.currentIndex].style.display = 'block';
@@ -39,26 +38,6 @@ class Carousel {
 
 const carouselElement = document.querySelector('.carousel');
 const carousel = new Carousel(carouselElement);
-
-console.log(carousel);
-
-
-
-
-// const images = Array.from(imageElements);
-// 
-// let currentIndex = 0;
-// 
-// leftButton.addEventListener('click', function(event) {
-//   images[currentIndex--].style.display = 'block';
-// })
-// 
-// rightButton.addEventListener('click', function(event) {
-//   images[currentIndex++].style.display = 'block';
-// })
-// 
-// console.log(images);
-// 
 
 
 
