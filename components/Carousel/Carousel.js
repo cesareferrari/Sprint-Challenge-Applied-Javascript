@@ -14,13 +14,25 @@ class Carousel {
 
   clickRight() {
     this.images.forEach(image => image.style.display = 'none');
-    this.currentIndex++;
+
+    if (this.currentIndex === (this.images.length - 1)) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex++;
+    }
+
     this.images[this.currentIndex].style.display = 'block';
   }
 
   clickLeft() {
     this.images.forEach(image => image.style.display = 'none');
-    this.currentIndex--;
+
+    if (this.currentIndex === 0) {
+      this.currentIndex = (this.images.length - 1)
+    } else {
+      this.currentIndex--;
+    }
+
     this.images[this.currentIndex].style.display = 'block';
   }
 }
