@@ -13,10 +13,10 @@ class Carousel {
   }
 
   move(event) {
-    let target = event.target;
+    let button = event.target;
     this.images.forEach(image => image.style.display = 'none');
 
-    if (target === this.leftButton) {
+    if (button === this.leftButton) {
       if (this.currentIndex === 0) {
         this.currentIndex = (this.images.length - 1)
       } else {
@@ -24,7 +24,7 @@ class Carousel {
       }
     } 
 
-    if (target === this.rightButton) {
+    if (button === this.rightButton) {
       if (this.currentIndex === (this.images.length - 1)) {
         this.currentIndex = 0;
       } else {
